@@ -1,4 +1,7 @@
 const cron = require('node-cron');
+const express = require('express');
+
+app = express();
 
 const every3Seconds = '*/3 * * * * *';
 const every10Seconds = '*/10 * * * * *';
@@ -12,3 +15,5 @@ const task = cron.schedule(every10Seconds, () => {
 
 task.start();
 
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
